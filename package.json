@@ -4,11 +4,14 @@
   "version": "1.0.0",
   "description": "Website foundation technology.",
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "test": "wtr \"./test/**/*.test.js\" --node-resolve --port=2000 --coverage",
-    "test:watch": "npm test -- --watch",
-    "lint": "npm run lint:js && npm run lint:css",
+    "test:watch": "pnpm test -- --watch",
+    "lint": "pnpm run lint:js && npm run lint:css",
     "lint:js": "eslint .",
-    "lint:css": "stylelint 'blocks/**/*.css' 'styles/*.css'"
+    "lint:css": "stylelint 'blocks/**/*.css' 'styles/*.css'",
+    "build": "rollup -c",
+    "watch": "rollup -cw"
   },
   "repository": {
     "type": "git",
@@ -24,6 +27,10 @@
     "@babel/core": "7.17.7",
     "@babel/eslint-parser": "7.17.0",
     "@esm-bundle/chai": "4.3.4-fix.0",
+    "@rollup/plugin-babel": "^6.0.3",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "@types/glob": "^8.0.1",
+    "@types/node": "^18.11.18",
     "@web/dev-server-import-maps": "^0.0.6",
     "@web/test-runner": "0.13.27",
     "@web/test-runner-commands": "0.6.1",
@@ -31,9 +38,15 @@
     "eslint": "8.11.0",
     "eslint-config-airbnb-base": "15.0.0",
     "eslint-plugin-import": "2.25.4",
+    "glob": "^8.1.0",
     "sinon": "13.0.1",
     "stylelint": "14.6.0",
     "stylelint-config-prettier": "9.0.3",
-    "stylelint-config-standard": "25.0.0"
+    "stylelint-config-standard": "25.0.0",
+    "tslib": "^2.4.1",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "solid-js": "^1.6.9"
   }
 }
