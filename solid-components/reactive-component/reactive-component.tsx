@@ -10,7 +10,7 @@ const getCatFact = () => fetch('https://meowfacts.herokuapp.com/')
     .then(data => data.data[0])
     .catch(error => error);
 
-const CatFacts = (props: CatFactProps) => {
+const CatFacts = () => {
     
     const [isLoading, changeIsLoading] = createSignal(false);
     const [fact, { refetch }] = createResource(getCatFact);
@@ -33,5 +33,5 @@ const CatFacts = (props: CatFactProps) => {
 }
 
 export default (block: HTMLElement) => {
-    render(() => <CatFacts block={block} />, block)
+    render(() => <CatFacts />, block)
 };
