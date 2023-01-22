@@ -1,5 +1,6 @@
 import { createResource, createSignal } from 'solid-js';
 import { render } from 'solid-js/web';
+import './cafa.css';
 
 type CatFactProps = {
     block: HTMLElement,
@@ -21,7 +22,9 @@ const CatFacts = () => {
 
     return (
         <>
-            <div>Cat Facts</div>
+            <h1 class="text-3xl font-bold underline bg-purple ">
+                Cat Facts
+            </h1>
             <div>
                 {isLoading() ? 'Loading' : fact()}
             </div>

@@ -3,6 +3,7 @@ import glob from 'glob';
 import { fileURLToPath } from 'url';
 import typescript from '@rollup/plugin-typescript';
 import babel from '@rollup/plugin-babel';
+import postcss from 'rollup-plugin-postcss';
 
 export default {
 	input: Object.fromEntries(
@@ -28,6 +29,16 @@ export default {
   ],
   plugins: [
     typescript(),
+    postcss({
+      config: {
+        path: './postcss.config.js',
+      },
+      extensions: ['.css'],
+      minimize: true,
+      inject: {
+        insertAt: 'top',
+      },
+    }),
     babel({
       exclude: 'node_modules/**',
       extensions: ['.ts', '.tsx'],
