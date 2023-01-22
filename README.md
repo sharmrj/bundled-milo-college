@@ -1,29 +1,34 @@
-# Milo goes to college
-Use this project template to create a Milo site.
-
-## Steps
-
-1. Copy existing [`college`](https://adobe.sharepoint.com/:f:/r/sites/adobecom/Shared%20Documents/) content folder to your sharepoint and give helix@adobe.com View access
-2. Click "[Use this template](https://github.com/adobecom/milo-college/generate)" Github button on this project.
-
-From your newly created project
-
-1. Install the [Helix Bot](https://github.com/apps/helix-bot/installations/new).
-2. Change the fstab.yaml file to point to your content.
-3. Add the project to the [Helix Sidekick](https://github.com/adobe/helix-sidekick).
-4. Start creating your content.
+# Milo with a bundler
+A setup for using Milo with rollup. In particular, this project uses SolidJS and typescript with Tailwind along with pnpm for a package manager. But you can modify it to use or not use whatever you please. 
 
 ## Developing
-1. Install the [Helix CLI](https://github.com/adobe/helix-cli): `sudo npm install -g @adobe/helix-cli`
-1. Run `hlx up` this repo's folder. (opens your browser at `http://localhost:3000`)
-1. Open this repo's folder in your favorite editor and start coding.
 
-## Testing
-```sh
-npm run test
+You can start the local dev server with `hlx up` like you would in a vanilla Milo project.
+You'll want to run `pnpm run watch` to watch any changes in your files (or `pnpm run build` to just compile once). The bundler is configured to compile your `.tsx/.ts` files and place them in the blocks folder.
+To make a component, make a new file `solid-components/your-component/your-component.tsx`. To use Tailwind with this component, make sure to make a file `solid-components/your-component/whatever.css` and import it into your `.tsx` file. Add the following incantation into the css file to make Tailwind work:
+
 ```
-or:
-```sh
-npm run test:watch
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 ```
-This will give you several options to debug tests. Note: coverage may not be accurate.
+Right now Tailwind looks inside `.ts` and `.tsx` files. You can change that in `tailwind.config.js`. You can define themes (like default colors) and so on in the tailwind config as well. See the Tailwind documentation for more. https://tailwindcss.com/docs/configuration
+
+Your final `.tsx` file might end up looking something like this:
+
+```
+import { createResource, createSignal } from 'solid-js';
+import { render } from 'solid-js/web';
+import './cafa.css';
+// other imports
+
+const Component = () => { ... }
+
+export default (block: HTMLElement) => {
+    render(() => <Component />, block);
+}
+
+```
+
+You can pass `block` as a prop to `Component` too if you like. Do as you please. 
