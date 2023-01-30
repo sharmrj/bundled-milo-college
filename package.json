@@ -11,7 +11,9 @@
     "lint:js": "eslint .",
     "lint:css": "stylelint 'blocks/**/*.css' 'styles/*.css'",
     "build": "rollup -c",
-    "watch": "rollup -cw"
+    "watch": "rollup -cw",
+    "generate": "rollup -c && node ssg/export.js",
+    "serve": "npx serve ssg/public -l 8080"
   },
   "repository": {
     "type": "git",
@@ -24,11 +26,12 @@
   },
   "homepage": "https://github.com/adobecom/college#readme",
   "devDependencies": {
-    "@babel/core": "7.17.7",
+    "@babel/core": "^7.20.12",
     "@babel/eslint-parser": "7.17.0",
     "@esm-bundle/chai": "4.3.4-fix.0",
     "@rollup/plugin-babel": "^6.0.3",
-    "@rollup/plugin-typescript": "^11.0.0",
+    "@rollup/plugin-commonjs": "^24.0.1",
+    "@rollup/plugin-node-resolve": "^15.0.1",
     "@types/glob": "^8.0.1",
     "@types/node": "^18.11.18",
     "@web/dev-server-import-maps": "^0.0.6",
@@ -37,12 +40,15 @@
     "autoprefixer": "^10.4.13",
     "babel-preset-solid": "^1.6.9",
     "chai": "4.3.6",
+    "cssnano": "^5.1.14",
     "eslint": "8.11.0",
     "eslint-config-airbnb-base": "15.0.0",
     "eslint-plugin-import": "2.25.4",
     "glob": "^8.1.0",
     "postcss": "^8.4.21",
+    "rollup": "^3.10.1",
     "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-typescript2": "^0.34.1",
     "sinon": "13.0.1",
     "stylelint": "14.6.0",
     "stylelint-config-prettier": "9.0.3",
@@ -52,6 +58,7 @@
     "typescript": "^4.9.4"
   },
   "dependencies": {
-    "solid-js": "^1.6.9"
+    "solid-js": "^1.6.9",
+    "solid-ssr": "^1.6.3"
   }
 }
