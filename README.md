@@ -1,34 +1,54 @@
-# Milo with a bundler
-A setup for using Milo with rollup. In particular, this project uses SolidJS and typescript with Tailwind along with pnpm for a package manager. But you can modify it to use or not use whatever you please. 
-
-## Developing
-
-You can start the local dev server with `hlx up` like you would in a vanilla Milo project.
-You'll want to run `pnpm run watch` to watch any changes in your files (or `pnpm run build` to just compile once). The bundler is configured to compile your `.tsx/.ts` files and place them in the blocks folder.
-To make a component, make a new file `solid-components/your-component/your-component.tsx`. To use Tailwind with this component, make sure to make a file `solid-components/your-component/whatever.css` and import it into your `.tsx` file. Add the following incantation into the css file to make Tailwind work:
+# Astro Starter Kit: Basics
 
 ```
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-```
-Right now Tailwind looks inside `.ts` and `.tsx` files. You can change that in `tailwind.config.js`. You can define themes (like default colors) and so on in the tailwind config as well. See the Tailwind documentation for more. https://tailwindcss.com/docs/configuration
-
-Your final `.tsx` file might end up looking something like this:
-
-```
-import { createResource, createSignal } from 'solid-js';
-import { render } from 'solid-js/web';
-import './cafa.css';
-// other imports
-
-const Component = () => { ... }
-
-export default (block: HTMLElement) => {
-    render(() => <Component />, block);
-}
-
+npm create astro@latest -- --template basics
 ```
 
-You can pass `block` as a prop to `Component` too if you like. Do as you please. 
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
+[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/s/github/withastro/astro/tree/latest/examples/basics)
+
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+
+![basics](https://user-images.githubusercontent.com/4677417/186188965-73453154-fdec-4d6b-9c34-cb35c248ae5b.png)
+
+
+## 🚀 Project Structure
+
+Inside of your Astro project, you'll see the following folders and files:
+
+```
+/
+├── public/
+│   └── favicon.svg
+├── src/
+│   ├── components/
+│   │   └── Card.astro
+│   ├── layouts/
+│   │   └── Layout.astro
+│   └── pages/
+│       └── index.astro
+└── package.json
+```
+
+Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+
+There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+
+Any static assets, like images, can be placed in the `public/` directory.
+
+## 🧞 Commands
+
+All commands are run from the root of the project, from a terminal:
+
+| Command                | Action                                           |
+| :--------------------- | :----------------------------------------------- |
+| `npm install`          | Installs dependencies                            |
+| `npm run dev`          | Starts local dev server at `localhost:3000`      |
+| `npm run build`        | Build your production site to `./dist/`          |
+| `npm run preview`      | Preview your build locally, before deploying     |
+| `npm run astro ...`    | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro --help` | Get help using the Astro CLI                     |
+
+## 👀 Want to learn more?
+
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
